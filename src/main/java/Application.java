@@ -18,9 +18,6 @@ public class Application {
 
         Connection connection = DriverManager.getConnection(url, user, password);
         EmployeeDTOImpl employeeDTO = new EmployeeDTOImpl(connection);
-//        City kursk = new City(6, "Kursk");
-//        Employee ivan = new Employee(6, "Ivan", "Sidorov", "m", 42, kursk);
-//        employeeDTO.create(ivan);
         System.out.println(employeeDTO.readById(4));
 
 
