@@ -1,10 +1,6 @@
 import dto.EmployeeDTO;
 import dto.EmployeeDTOImpl;
 import lombok.SneakyThrows;
-import model.City;
-import model.Employee;
-import sun.jvm.hotspot.types.CIntegerType;
-import java.*;
 
 import java.sql.*;
 

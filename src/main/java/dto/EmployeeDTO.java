@@ -1,6 +1,5 @@
 package dto;
 
-import model.City;
 import model.Employee;
 
 import java.util.List;

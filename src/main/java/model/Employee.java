@@ -1,5 +1,5 @@
 package model;
-
+import java.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,6 @@ public class Employee {
     private String gender;
     private int age;
     private City city;
-
 
     public static Employee create(ResultSet resultSet) throws SQLException {
         Employee employee = new Employee();
