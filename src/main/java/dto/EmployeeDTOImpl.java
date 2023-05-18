@@ -26,7 +26,7 @@ public class EmployeeDTOImpl implements EmployeeDTO {
             preparedStatement.setInt(5, employee.getCity().getCityId());
             preparedStatement.executeQuery();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
