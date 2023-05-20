@@ -8,10 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class EmployeeDTOImpl implements EmployeeDTO {
+public class EmployeeDAOImpl implements EmployeeDAO {
     private final Connection connection;
 
-    public EmployeeDTOImpl(Connection connection) {
+    public EmployeeDAOImpl(Connection connection) {
         this.connection = connection;
     }
 
@@ -23,7 +23,7 @@ public class EmployeeDTOImpl implements EmployeeDTO {
             preparedStatement.setString(2, employee.getLastName());
             preparedStatement.setString(3, employee.getGender());
             preparedStatement.setInt(4, employee.getAge());
-            preparedStatement.setInt(5, employee.getCity().getCityId());
+            preparedStatement.setObject(5, employee.getCity().getCityId());
             preparedStatement.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -4,7 +4,7 @@ import model.Employee;
 
 import java.util.List;
 
-public interface EmployeeDTO {
+public interface EmployeeDAO {
 
     void create(Employee employee);
 

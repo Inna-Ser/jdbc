@@ -8,10 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CityDTOImpl implements CityDTO {
+public class CityDAOImpl implements CityDAO {
     private final Connection connection;
 
-    public CityDTOImpl(Connection connection) {
+    public CityDAOImpl(Connection connection) {
         this.connection = connection;
     }
 
@@ -24,6 +24,23 @@ public class CityDTOImpl implements CityDTO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public City findByName(String city_name) {
+        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM city WHERE city_name=(?)")) {
+            statement.setString(1, city_name);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                City city = new City();
+                city.setCityId(resultSet.getInt("id"));
+                city.setCityName(resultSet.getString("city_name"));
+                return city;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

@@ -1,13 +1,14 @@
 package dto;
 
 import model.City;
-import model.Employee;
 
 import java.util.List;
 
-public interface CityDTO {
+public interface CityDAO {
 
     void create(City city);
+
+    City findByName(String city_name);
 
     City readById(int id);
 
