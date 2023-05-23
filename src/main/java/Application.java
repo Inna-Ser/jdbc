@@ -1,5 +1,5 @@
-import dto.CityDAOImpl;
-import dto.EmployeeDAOImpl;
+import dao.CityDAOImpl;
+import dao.EmployeeDAOImpl;
 import model.City;
 import model.Employee;
 
@@ -16,11 +16,15 @@ public class Application {
         EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl(connection);
         CityDAOImpl cityDAO = new CityDAOImpl(connection);
         City city = new City("Moscow");
-        cityDAO.create(city);
-        City moscow = cityDAO.findByName("Moscow");
-        Employee ivan = new Employee("Ivan", "Sidorov", "m", 42, moscow);
-        employeeDAO.create(ivan);
-        System.out.println(employeeDAO.readById(2));
+        if (city == cityDAO.findByName("Moscow")) {
+            Employee ivan = new Employee("Ivan", "Sidorov", "m", 42, city);
+        } else {
+            cityDAO.create(city);
+            city = cityDAO.findByName("Moscow");
+            Employee ivan = new Employee("Ivan", "Sidorov", "m", 42, city);
+            employeeDAO.create(ivan);
+            System.out.println(employeeDAO.readById(2));
+        }
     }
 }
 
