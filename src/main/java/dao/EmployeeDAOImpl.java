@@ -1,11 +1,13 @@
 package dao;
 
+import model.City;
 import model.Employee;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeDAOImpl implements EmployeeDAO {
@@ -48,16 +50,49 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public List<Employee> readAll() {
-        return null;
+        List<Employee> employeeList = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement
+                ("SELECT * FROM employee INNER JOIN city ON employee.city_id = city.city_id")) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = Integer.parseInt(resultSet.getString("id"));
+                String firstName = resultSet.getString("first_name");
+                String lastName = resultSet.getString("last_name");
+                String gender = resultSet.getString("gender");
+                int age = Integer.parseInt(resultSet.getString("age"));
+                City city = new City(resultSet.getInt("city_id"), resultSet.getString("city"));
+                employeeList.add(new Employee(id, firstName, lastName, gender, age, city));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return employeeList;
     }
 
     @Override
-    public void updateById(int id) {
+    public void updateById(int id, String firstName, String lastName, String gender, int age, City city) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement
+                ("UPDATE employee SET firstName = (?), lastName = (?), gender = (?), age = (?), cityId = (?) WHERE id = (?)")) {
+            preparedStatement.setString(1, firstName);
+            preparedStatement.setString(2, lastName);
+            preparedStatement.setString(3, gender);
+            preparedStatement.setInt(4, age);
+            preparedStatement.setObject(5, city);
+            preparedStatement.setInt(6, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Override
     public void deleteById(int id) {
-
+        try (PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM employee WHERE id = (?)")) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
