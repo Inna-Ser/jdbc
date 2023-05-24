@@ -13,7 +13,7 @@ public interface EmployeeDAO {
 
     List<Employee> readAll();
 
-    void updateById(int id, String firstName, String lastName, String gender, int age, City city);
+    void updateById(int id, String firstName, String lastName, String gender, int age);
 
     void deleteById(int id);
 }

@@ -20,7 +20,7 @@ public class CityDAOImpl implements CityDAO {
         try (PreparedStatement statement = connection.prepareStatement(
                 "INSERT INTO city (city_name) VALUES (?)")) {
             statement.setString(1, city.getCityName());
-//            statement.executeQuery();
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -33,7 +33,7 @@ public class CityDAOImpl implements CityDAO {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 City city = new City();
-                city.setCityId(resultSet.getInt("id"));
+//                city.setCityId(resultSet.getInt("id"));
                 city.setCityName(resultSet.getString("city_name"));
                 return city;
             }

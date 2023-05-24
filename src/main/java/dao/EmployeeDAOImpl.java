@@ -26,7 +26,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             preparedStatement.setString(3, employee.getGender());
             preparedStatement.setInt(4, employee.getAge());
             preparedStatement.setObject(5, employee.getCity().getCityId());
-            preparedStatement.executeQuery();
+            switch (preparedStatement.executeUpdate()) {
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -35,7 +36,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public Employee readById(int id) {
         try (PreparedStatement preparedStatement = connection.prepareStatement
-                ("SELECT * FROM employee INNER JOIN city ON employee.city_id=city.city_id AND id = (?)")) {
+                ("SELECT * FROM employee e INNER JOIN city c ON e.city_id=c.city_id AND id = (?)")) {
             preparedStatement.setInt(1, id);
             preparedStatement.setMaxRows(1);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -44,9 +45,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             }
             return null;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+        return null;
     }
+
+
 
     @Override
     public List<Employee> readAll() {
@@ -60,7 +64,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 String lastName = resultSet.getString("last_name");
                 String gender = resultSet.getString("gender");
                 int age = Integer.parseInt(resultSet.getString("age"));
-                City city = new City(resultSet.getInt("city_id"), resultSet.getString("city"));
+                City city = new City(resultSet.getInt("city_id"), resultSet.getString("city_name"));
                 employeeList.add(new Employee(id, firstName, lastName, gender, age, city));
             }
         } catch (SQLException e) {
@@ -70,15 +74,14 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public void updateById(int id, String firstName, String lastName, String gender, int age, City city) {
+    public void updateById(int id, String firstName, String lastName, String gender, int age) {
         try (PreparedStatement preparedStatement = connection.prepareStatement
-                ("UPDATE employee SET firstName = (?), lastName = (?), gender = (?), age = (?), cityId = (?) WHERE id = (?)")) {
+                ("UPDATE employee SET first_name = (?), last_name = (?), gender = (?), age = (?) WHERE id = (?)")) {
             preparedStatement.setString(1, firstName);
             preparedStatement.setString(2, lastName);
             preparedStatement.setString(3, gender);
             preparedStatement.setInt(4, age);
-            preparedStatement.setObject(5, city);
-            preparedStatement.setInt(6, id);
+            preparedStatement.setInt(5, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
