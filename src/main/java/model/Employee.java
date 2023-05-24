@@ -15,10 +15,10 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String gender;
-    private int age;
-    private City city;
+    private Integer age;
+    private Integer city;
 
-    public Employee(String firstName, String lastName, String gender, int age, City city) {
+    public Employee(String firstName, String lastName, String gender, int age, Integer city) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -33,7 +33,7 @@ public class Employee {
         employee.setLastName(resultSet.getString("last_name"));
         employee.setGender(resultSet.getString("gender"));
         employee.setAge(resultSet.getInt("age"));
-        employee.setCity(new City(resultSet.getString("city_id")));
+        employee.setCity(new City(resultSet.getString("city_id")).getCityId());
         return employee;
     }
 }

@@ -14,13 +14,13 @@ public class Application {
 
         Connection connection = DriverManager.getConnection(url, user, password);
         EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl(connection);
-        CityDAOImpl cityDAO = new CityDAOImpl(connection);
-        City moscow = cityDAO.findByName("Moscow");
-        if (moscow == null) {
-            cityDAO.create(new City("Moscow"));
-            moscow = cityDAO.findByName("Moscow");
-        }
-        Employee ivan = new Employee("Ivan", "Sidorov", "m", 42, moscow);
+//        CityDAOImpl cityDAO = new CityDAOImpl(connection);
+//        City moscow = cityDAO.findByName("Moscow");
+//        if (moscow == null) {
+//            cityDAO.create(new City("Moscow"));
+//            moscow = cityDAO.findByName("Moscow");
+//        }
+        Employee ivan = new Employee("Ivan", "Sidorov", "m", 42, 2);
         employeeDAO.create(ivan);
 //        employeeDAO.updateById(1, "Vasiliy", "Petrov", "m", 25);
 //        employeeDAO.deleteById(16);

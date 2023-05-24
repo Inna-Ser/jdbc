@@ -12,6 +12,7 @@ import java.util.List;
 
 public class EmployeeDAOImpl implements EmployeeDAO {
     private final Connection connection;
+    private City city;
 
     public EmployeeDAOImpl(Connection connection) {
         this.connection = connection;
@@ -25,9 +26,14 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             preparedStatement.setString(2, employee.getLastName());
             preparedStatement.setString(3, employee.getGender());
             preparedStatement.setInt(4, employee.getAge());
-            preparedStatement.setObject(5, employee.getCity().getCityId());
-            switch (preparedStatement.executeUpdate()) {
+            CityDAOImpl cityDAO = new CityDAOImpl(connection);
+            City city1 = cityDAO.findByName(city.setCityName("?"));
+            if (city1 == null) {
+                cityDAO.create(new City());
+                city = cityDAO.findByName(city.getCityName());
             }
+            preparedStatement.setInt(5, Integer.parseInt(city.getCityName()));
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -50,8 +56,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return null;
     }
 
-
-
     @Override
     public List<Employee> readAll() {
         List<Employee> employeeList = new ArrayList<>();
@@ -65,7 +69,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 String gender = resultSet.getString("gender");
                 int age = Integer.parseInt(resultSet.getString("age"));
                 City city = new City(resultSet.getInt("city_id"), resultSet.getString("city_name"));
-                employeeList.add(new Employee(id, firstName, lastName, gender, age, city));
+                employeeList.add(new Employee(id, firstName, lastName, gender, age, city.getCityId()));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -86,7 +90,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
