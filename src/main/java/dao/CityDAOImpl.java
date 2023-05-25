@@ -27,13 +27,12 @@ public class CityDAOImpl implements CityDAO {
     }
 
     @Override
-    public City findByName(String city_name) {
+    public City findByName(String cityName) {
         try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM city WHERE city_name=(?)")) {
-            statement.setString(1, city_name);
+            statement.setString(1, cityName);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 City city = new City();
-//                city.setCityId(resultSet.getInt("id"));
                 city.setCityName(resultSet.getString("city_name"));
                 return city;
             }

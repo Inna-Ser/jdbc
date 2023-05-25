@@ -16,9 +16,10 @@ public class Employee {
     private String lastName;
     private String gender;
     private Integer age;
-    private Integer city;
+    private City city;
 
-    public Employee(String firstName, String lastName, String gender, int age, Integer city) {
+
+    public Employee(String firstName, String lastName, String gender, Integer age, City city) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -33,7 +34,7 @@ public class Employee {
         employee.setLastName(resultSet.getString("last_name"));
         employee.setGender(resultSet.getString("gender"));
         employee.setAge(resultSet.getInt("age"));
-        employee.setCity(new City(resultSet.getString("city_id")).getCityId());
+        employee.setCity(new City(resultSet.getInt("city_id"), resultSet.getString("city_name")));
         return employee;
     }
 }

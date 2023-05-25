@@ -11,7 +11,7 @@ import java.sql.SQLException;
 @AllArgsConstructor
 @NoArgsConstructor
 public class City {
-    private Integer cityId;
+    private int cityId;
     private String cityName;
 
     public City(String cityName) {
