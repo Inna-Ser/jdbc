@@ -4,14 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+//@Entity
+//@Table(name="city")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class City {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "cityId")
     private int cityId;
+//    @Column(name = "city_name")
     private String cityName;
 
     public City(String cityName) {

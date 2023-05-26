@@ -33,6 +33,7 @@ public class CityDAOImpl implements CityDAO {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 City city = new City();
+                city.setCityId(resultSet.getInt("city_id"));
                 city.setCityName(resultSet.getString("city_name"));
                 return city;
             }

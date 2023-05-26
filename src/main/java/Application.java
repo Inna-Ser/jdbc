@@ -22,9 +22,9 @@ public class Application {
         }
         Employee ivan = new Employee("Ivan", "Sidorov", "m", 42, moscow);
         employeeDAO.create(ivan);
-//        employeeDAO.updateById(1, "Vasiliy", "Petrov", "m", 25);
-//        employeeDAO.deleteById(16);
+        employeeDAO.updateById(1, "Artur", "Petrov", "m", 25);
             System.out.println(employeeDAO.readAll());
+
         }
     }
 

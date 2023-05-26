@@ -2,6 +2,8 @@ package dao;
 
 import model.City;
 import model.Employee;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,8 +19,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         this.connection = connection;
     }
 
-    @Override
-    public void create(Employee employee) {
+        public void create(Employee employee) {
         try (PreparedStatement preparedStatement = connection.prepareStatement
                 ("INSERT INTO employee (first_name, last_name, gender, age, city_id) VALUES (?, ?, ?, ?, ?)")) {
             preparedStatement.setString(1, employee.getFirstName());
@@ -31,6 +32,15 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             e.printStackTrace();
         }
     }
+//    @Override
+//    public void create(Employee employee) {
+//        try (
+//                Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();) {
+//            Transaction transaction = session.beginTransaction();
+//            session.save(employee);
+//            transaction.commit();
+//        }
+//    }
 
     @Override
     public Employee readById(int id) {
