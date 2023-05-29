@@ -7,17 +7,17 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-//@Entity
-//@Table(name="city")
+@Entity
+@Table(name="city")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class City {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "cityId")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "city_id")
     private int cityId;
-//    @Column(name = "city_name")
+    @Column(name = "city_name")
     private String cityName;
 
     public City(String cityName) {
