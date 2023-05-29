@@ -9,11 +9,11 @@ public interface EmployeeDAO {
 
     void create(Employee employee);
 
-    Employee readById(int CityId);
+    Employee readById(int Id);
 
-    List<Employee> readAll();
-
-    void updateById(int CityId, String firstName, String lastName, String gender, int age);
+    void updateById(Employee employee);
 
     void deleteById(int id);
+
+    List<Employee> readAll();
 }
