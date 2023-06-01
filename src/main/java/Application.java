@@ -3,11 +3,14 @@ import dao.EmployeeDAO;
 import dao.EmployeeDAOImpl;
 import model.City;
 import model.Employee;
+import org.apache.log4j.BasicConfigurator;
 
 import java.sql.*;
 
 public class Application {
+
     public static void main(String[] args) {
+
         EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 
         Employee employee = new Employee();
