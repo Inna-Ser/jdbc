@@ -1,8 +1,6 @@
 package model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -21,25 +19,8 @@ public class Employee {
     private String lastName;
     private String gender;
     private Integer age;
-    @Column(name = "citY_id")
-    private Integer city;
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
 
-    public Employee(String firstName, String lastName, String gender, Integer age, Integer city) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.age = age;
-        this.city = city;
-    }
-
-//        public static Employee create(ResultSet resultSet) throws SQLException {
-//        Employee employee = new Employee();
-//        employee.setId(resultSet.getInt("id"));
-//        employee.setFirstName(resultSet.getString("first_name"));
-//        employee.setLastName(resultSet.getString("last_name"));
-//        employee.setGender(resultSet.getString("gender"));
-//        employee.setAge(resultSet.getInt("age"));
-//        employee.setCity(new City(resultSet.getString("city_name")));
-//        return employee;
-//    }
 }

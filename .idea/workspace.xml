@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cdc0db9-a350-4495-85c6-fb1840cd7f7a" name="Changes" comment="Commit 11">
+    <list default="true" id="2cdc0db9-a350-4495-85c6-fb1840cd7f7a" name="Changes" comment="Commit 13">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/CityDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/CityDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/CityDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/CityDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/City.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utiis/HibernateSessionFactoryUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utiis/HibernateSessionFactoryUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,18 +35,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "history": [
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
     {
-      "state": "OPEN",
-      "author": "Inna-Ser"
+      &quot;state&quot;: &quot;OPEN&quot;,
+      &quot;author&quot;: &quot;Inna-Ser&quot;
     }
   ],
-  "lastFilter": {
-    "state": "OPEN",
-    "author": "Inna-Ser"
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;author&quot;: &quot;Inna-Ser&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -58,26 +61,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Application" />
@@ -101,7 +104,8 @@
       <option name="presentableId" value="Default" />
       <updated>1684257661245</updated>
       <workItem from="1684257662271" duration="32383000" />
-      <workItem from="1684352026817" duration="123452000" />
+      <workItem from="1684352026817" duration="124967000" />
+      <workItem from="1685710111914" duration="23366000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1684354300102</created>
@@ -194,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685383934240</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Commit 12">
+      <created>1685640594632</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1685640594632</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,6 +224,19 @@
     <MESSAGE value="Commit 9" />
     <MESSAGE value="Commit 10" />
     <MESSAGE value="Commit 11" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit 11" />
+    <MESSAGE value="Commit 12" />
+    <MESSAGE value="Commit 13" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit 13" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dao/CityDAOImpl.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

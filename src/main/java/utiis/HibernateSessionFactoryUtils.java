@@ -1,5 +1,6 @@
 package utiis;
 
+import model.City;
 import org.hibernate.cfg.Configuration;
 import model.Employee;
 import org.hibernate.SessionFactory;
@@ -10,11 +11,16 @@ public class HibernateSessionFactoryUtils {
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
-            Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
-            configuration.addAnnotatedClass(Employee.class);
-            sessionFactory = configuration.buildSessionFactory(new StandardServiceRegistryBuilder()
-                    .applySettings(configuration.getProperties())
-                    .build());
+            try {
+                Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+                configuration.addAnnotatedClass(Employee.class);
+                configuration.addAnnotatedClass(City.class);
+                sessionFactory = configuration.buildSessionFactory(new StandardServiceRegistryBuilder()
+                        .applySettings(configuration.getProperties())
+                        .build());
+            } catch (Exception e) {
+                System.out.println("Искличение!" + e);
+            }
         }
         return sessionFactory;
     }
