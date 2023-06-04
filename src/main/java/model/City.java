@@ -1,9 +1,6 @@
 package model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.ResultSet;
@@ -12,10 +9,11 @@ import java.util.List;
 
 @Entity
 @Table(name="city")
-@Data
 @ToString(of = {"cityId", "cityName"})
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

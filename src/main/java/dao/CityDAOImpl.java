@@ -25,19 +25,23 @@ public class CityDAOImpl implements CityDAO {
 
     @Override
     public City readById(int id) {
-        return HibernateSessionFactoryUtils.getSessionFactory().openSession().get(City.class, id);
+        try (Session session = HibernateSessionFactoryUtils.getSessionFactory().openSession()) {
+            return session.get(City.class, id);
+        }
     }
 
     @Override
     public List<City> readAll() {
-        return HibernateSessionFactoryUtils.getSessionFactory().openSession().createQuery("FROM City").list();
+        try (Session session = HibernateSessionFactoryUtils.getSessionFactory().openSession()) {
+            return session.createQuery("FROM City").list();
+        }
     }
 
     @Override
-    public void updateById(int id) {
+    public void updateCity(City city) {
         try (Session session = HibernateSessionFactoryUtils.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.update("id");
+            session.update(city);
             transaction.commit();
         }
     }

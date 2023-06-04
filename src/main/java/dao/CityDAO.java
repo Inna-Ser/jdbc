@@ -14,7 +14,7 @@ public interface CityDAO {
 
     List<City> readAll();
 
-    void updateById(int id);
+    void updateCity(City city);
 
     void deleteById(int id);
 

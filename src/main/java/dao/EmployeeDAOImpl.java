@@ -20,14 +20,16 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public Employee readById(int id) {
-        return HibernateSessionFactoryUtils.getSessionFactory().openSession().get(Employee.class, id);
+        try (Session session = HibernateSessionFactoryUtils.getSessionFactory().openSession()) {
+            return session.get(Employee.class, id);
+        }
     }
 
     @Override
     public void updateById(Employee employee) {
         try (Session session = HibernateSessionFactoryUtils.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.update(employee);
+            session.merge(employee);
             transaction.commit();
         }
     }
@@ -42,11 +44,17 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
+    public void deleteEmployee(Employee employee) {
+        try (Session session = HibernateSessionFactoryUtils.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.remove(employee);
+            transaction.commit();
+        }
+    }
+
+    @Override
     public List<Employee> readAll() {
-        return HibernateSessionFactoryUtils
-                .getSessionFactory()
-                .openSession()
-                .createQuery("FROM Employee ")
-                .list();
+        Session session = HibernateSessionFactoryUtils.getSessionFactory().openSession();
+        return session.createQuery("FROM Employee ").list();
     }
 }

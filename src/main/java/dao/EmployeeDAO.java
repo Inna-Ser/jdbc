@@ -15,5 +15,7 @@ public interface EmployeeDAO {
 
     void deleteById(int id);
 
+    void deleteEmployee(Employee employee);
+
     List<Employee> readAll();
 }
