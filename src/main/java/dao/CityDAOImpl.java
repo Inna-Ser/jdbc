@@ -10,17 +10,24 @@ import java.util.List;
 public class CityDAOImpl implements CityDAO {
 
     @Override
-    public void create(City city) {
+    public City create(City city) {
+        City city1 = new City();
         try (Session session = HibernateSessionFactoryUtils.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.save(city);
-            transaction.commit();
+            if (!city1.equals(session.get(City.class, city.getCityName()))) {
+                session.save(city1);
+                transaction.commit();
+            }
+            return city;
         }
     }
 
+
     @Override
     public City findByName(String cityName) {
-        return HibernateSessionFactoryUtils.getSessionFactory().openSession().get(City.class, cityName);
+        try (Session session = HibernateSessionFactoryUtils.getSessionFactory().openSession()) {
+            return session.get(City.class, cityName);
+        }
     }
 
     @Override

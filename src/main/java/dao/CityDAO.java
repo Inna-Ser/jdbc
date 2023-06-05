@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CityDAO {
 
-    void create(City city);
+    City create(City city);
 
     City findByName(String city_name);
 

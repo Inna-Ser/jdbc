@@ -36,9 +36,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public void deleteById(int id) {
+        Employee employee = new Employee();
         try (Session session = HibernateSessionFactoryUtils.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.remove("id");
+            employee = session.get(Employee.class, id);
+            session.remove(employee);
             transaction.commit();
         }
     }
