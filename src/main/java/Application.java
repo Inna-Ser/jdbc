@@ -18,7 +18,7 @@ public class Application {
         danil.setLastName("Glebov");
         danil.setGender("m");
         danil.setAge(19);
-        danil.setCity(city);
+        danil.setCity(Integer.parseInt("2"));
 
         employeeDAO.create(danil);
 //

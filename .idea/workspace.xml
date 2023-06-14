@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cdc0db9-a350-4495-85c6-fb1840cd7f7a" name="Changes" comment="Commit 14">
+    <list default="true" id="2cdc0db9-a350-4495-85c6-fb1840cd7f7a" name="Changes" comment="Commit 15">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/CityDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/CityDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/CityDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/CityDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Employee.java" afterDir="false" />
     </list>
@@ -103,7 +102,10 @@
       <updated>1684257661245</updated>
       <workItem from="1684257662271" duration="32383000" />
       <workItem from="1684352026817" duration="124967000" />
-      <workItem from="1685710111914" duration="38168000" />
+      <workItem from="1685710111914" duration="39060000" />
+      <workItem from="1686073482687" duration="2699000" />
+      <workItem from="1686625886942" duration="56000" />
+      <workItem from="1686775804766" duration="2589000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1684354300102</created>
@@ -217,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685904567374</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Commit 15">
+      <created>1685942774337</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1685942774337</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +248,7 @@
     <MESSAGE value="Commit 12" />
     <MESSAGE value="Commit 13" />
     <MESSAGE value="Commit 14" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit 14" />
+    <MESSAGE value="Commit 15" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit 15" />
   </component>
 </project>

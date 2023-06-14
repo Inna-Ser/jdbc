@@ -56,7 +56,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public List<Employee> readAll() {
-        Session session = HibernateSessionFactoryUtils.getSessionFactory().openSession();
-        return session.createQuery("FROM Employee ").list();
+        try (Session session = HibernateSessionFactoryUtils.getSessionFactory().openSession()) {
+            return session.createQuery("FROM Employee ").list();
+        }
     }
 }

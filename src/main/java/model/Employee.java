@@ -20,8 +20,9 @@ public class Employee {
     private String lastName;
     private String gender;
     private Integer age;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "city_id")
-    private City city;
+//    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    @Column(name = "city_id")
+    private int city;
 
 }
