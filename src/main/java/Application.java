@@ -1,28 +1,42 @@
-import dto.EmployeeDTO;
-import dto.EmployeeDTOImpl;
-import lombok.SneakyThrows;
+import dao.CityDAO;
+import dao.CityDAOImpl;
+import dao.EmployeeDAO;
+import dao.EmployeeDAOImpl;
 import model.City;
 import model.Employee;
-import sun.jvm.hotspot.types.CIntegerType;
-import java.*;
-
-import java.sql.*;
 
 public class Application {
-    @SneakyThrows
+
     public static void main(String[] args) {
-
-        final String user = "postgres";
-        final String password = "3502miii";
-        final String url = "jdbc:postgresql://localhost:5432/postgres";
-
-        Connection connection = DriverManager.getConnection(url, user, password);
-        EmployeeDTOImpl employeeDTO = new EmployeeDTOImpl(connection);
-//        City kursk = new City(6, "Kursk");
-//        Employee ivan = new Employee(6, "Ivan", "Sidorov", "m", 42, kursk);
-//        employeeDTO.create(ivan);
-        System.out.println(employeeDTO.readById(4));
+        CityDAO cityDAO = new CityDAOImpl();
+        EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+        City city = new City("Orel");
 
 
+        Employee danil = new Employee();
+        danil.setFirstName("Toly");
+        danil.setLastName("Glebov");
+        danil.setGender("m");
+        danil.setAge(19);
+        danil.setCity(Integer.parseInt("2"));
+
+        employeeDAO.create(danil);
+//
+//        Employee employee = employeeDAO.readById(3);
+//        employee.setFirstName("Natasha");
+//        employeeDAO.updateById(employee);
+
+//        Employee employee = employeeDAO.readById(65);
+//        employeeDAO.deleteEmployee(employee);
+//        City city = cityDAO.readById(4);
+//        cityDAO.deleteCity(city);
+//        City city12 = cityDAO.readById(12);
+//        cityDAO.deleteCity(city12);
+        System.out.println(employeeDAO.readAll());
+        System.out.println(cityDAO.readAll());
     }
 }
+
+
+
+

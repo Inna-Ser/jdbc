@@ -1,32 +1,28 @@
 package model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "employee")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
     private String gender;
-    private int age;
-    private City city;
+    private Integer age;
+//    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    @Column(name = "city_id")
+    private int city;
 
-
-    public static Employee create(ResultSet resultSet) throws SQLException {
-        Employee employee = new Employee();
-        employee.setId(resultSet.getInt("id"));
-        employee.setFirstName(resultSet.getString("first_name"));
-        employee.setLastName(resultSet.getString("last_name"));
-        employee.setGender(resultSet.getString("gender"));
-        employee.setAge(resultSet.getInt("age"));
-        employee.setCity(new City(resultSet.getInt("city_id"), resultSet.getString("city_name")));
-        return employee;
-    }
 }
