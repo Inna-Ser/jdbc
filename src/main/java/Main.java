@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 //      Task 1
 
-        Stream<Integer> stream = new ArrayList<>(Arrays.asList(9, 5, 4, 0, -3, -5)).stream();
+        Stream<Integer> stream = new ArrayList<>(Arrays.asList(0)).stream();
         findMinMax(stream, (x, y) -> x.compareTo(y), (x, y) -> System.out.println("min - " + x + ", max - " + y));
         stream.close();
 
@@ -24,13 +24,14 @@ public class Main {
             Comparator<? super T> order,
             BiConsumer<? super T, ? super T> minMaxConsumer
     ) {
-        Optional.ofNullable(stream);
-        minMaxConsumer.accept(null, null);
         List<? extends T> tList = stream.sorted(order)
-                        .collect(Collectors.toList());
-        minMaxConsumer.accept(tList.get(0), tList.get(tList.size() - 1));
+                .collect(Collectors.toList());
+        if (tList.isEmpty()) {
+            minMaxConsumer.accept(null, null);
+        } else {
+            minMaxConsumer.accept(tList.get(0), tList.get(tList.size() - 1));
+        }
     }
-
     //      Method task 2
     public static void findEvenNumbers(List<Integer> integers) {
         System.out.println(integers.stream()
